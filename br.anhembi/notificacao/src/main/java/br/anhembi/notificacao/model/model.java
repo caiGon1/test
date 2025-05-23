@@ -4,49 +4,46 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "bdNotificacao")
+@Table(name = "bdVerificacao")
 public class model {
+
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int userId;
-private String notificacao;
-private LocalDateTime data;
-private double valorSaida;
-private double valorAtual;
+private int notifId;
 
+private int userId;
+
+private LocalDate data;
+
+private double valorSaida;
 
 
 public model() {
 }
-
-
-
-public model(String notificacao, LocalDateTime data, double valorSaida, int userId, double valorAtual) {
+public model(int userId, int notifId, LocalDate data, double valorSaida) {
     this.userId = userId;
-    this.notificacao = notificacao;
+    this.notifId = notifId;
     this.data = data;
     this.valorSaida = valorSaida;
-    this.valorAtual = valorAtual;
 }
 
 
 
 
 
-public String getNotificacao() {
-    return notificacao;
-}
-public void setNotificacao(String notificacao) {
-    this.notificacao = notificacao;
-}
-public LocalDateTime getData() {
+
+
+
+
+
+public LocalDate getData() {
     return data;
 }
-public void setData(LocalDateTime data) {
+public void setData(LocalDate data) {
     this.data = data;
 }
 public double getValorSaida() {
@@ -61,17 +58,11 @@ public int getUserId() {
 public void setUserId(int userId) {
     this.userId = userId;
 }
-
-
-
-public double getValorAtual() {
-    return valorAtual;
+public int getNotifId() {
+    return notifId;
 }
-
-
-
-public void setValorAtual(double valorAtual) {
-    this.valorAtual = valorAtual;
+public void setNotifId(int notifId) {
+    this.notifId = notifId;
 }
 
 
