@@ -1,0 +1,14 @@
+public boolean processarEvento(dto dto) {
+
+        if (repository.existsByUserIdAndData(dto.getUserId(), dto.getData())) {
+            return false; // Evento duplicado
+        }
+
+        model evento = new model();
+        evento.setUserId(dto.getUserId());
+        evento.setData(dto.getData());
+        evento.setMensagem(dto.getMensagem());
+
+        repository.save(evento);
+        return true;
+    }

@@ -15,23 +15,19 @@ public class service {
     }
 
 
-     public void processarEventoo(dto eventoDTO) {
+     public boolean processarEvento(dto eventoDTO) {
         System.out.println("Recebido evento do user " + eventoDTO.getUserId()
             + ": " + eventoDTO.getMensagem()
             + " em " + eventoDTO.getData());
-        // você pode salvar no banco aqui
-    }
 
-    public boolean processarEvento(dto dto) {
-
-        if (repository.existsByUserIdAndData(dto.getUserId(), dto.getData())) {
+            if (repository.existsByUserIdAndData(eventoDTO.getUserId(), eventoDTO.getData())) {
             return false; // Evento duplicado
         }
 
         model evento = new model();
-        evento.setUserId(dto.getUserId());
-        evento.setData(dto.getData());
-        evento.setMensagem(dto.getMensagem());
+        evento.setUserId(eventoDTO.getUserId());
+        evento.setData(eventoDTO.getData());
+        evento.setMensagem(eventoDTO.getMensagem());
 
         repository.save(evento);
         return true;

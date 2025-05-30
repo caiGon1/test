@@ -62,7 +62,7 @@ public String verificar() {
         }
 
         EventoDTO evento = new EventoDTO();
-        evento.setId(1);
+        evento.setUserId(1);
         evento.setData(repo.findTopByUserIdOrderByNotifIdDesc(1).map(model::getData).orElse(null));
         evento.setMensagem(mensagem);
 
